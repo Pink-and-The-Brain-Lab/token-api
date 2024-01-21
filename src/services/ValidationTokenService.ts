@@ -13,7 +13,7 @@ class ValidationTokenService {
         if (currentDateInMilliseconds > validateTokenTime || registeredToken.validated) throw new AppError('API_ERRORS.TOKEN_EXPIRED');
         registeredToken.validated = true;
         await tokenRepository.save(registeredToken);
-        return token;
+        return registeredToken;
     }
 }
 

@@ -1,17 +1,16 @@
 import { AppDataSource } from "../data-source";
 import ValidationToken from "../models/validation-token.model";
+import validateEmail from "../utils/validate-email";
 
 class CreateValidationTokenService {
     public async execute(email: string) {
+        validateEmail(email);
         const tokenRepository = AppDataSource.getRepository(ValidationToken);
         let token = '';
         const tokenSize = 6;
         const currentDateInMilliseconds = new Date().getTime();
         const fiveMinuteInMilliseconds = 5 * 60 * 1000;
-        
-        for (let i = 0; i < tokenSize; i++ ) {
-            token += Math.round(Math.random() * 9);
-        }
+        for (let i = 0; i < tokenSize; i++ ) token += Math.round(Math.random() * 9);
 
         const tokenData = tokenRepository.create({
             token,
