@@ -1,10 +1,12 @@
 import { AppDataSource } from "../data-source";
 import ValidationToken from "../models/validation-token.model";
-import validateEmail from "../utils/validate-email";
+import { ValidateEmail } from "../utils/validate-email";
+import AppError from "../errors/AppError";
 
 class CreateValidationTokenService {
     public async execute(email: string) {
-        validateEmail(email);
+        const validateEmail = new ValidateEmail().validate(email);
+        if (!validateEmail) throw new AppError('INVALID_EMAIL');
         const tokenRepository = AppDataSource.getRepository(ValidationToken);
         let token = '';
         const tokenSize = 6;

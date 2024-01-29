@@ -6,7 +6,9 @@
   "scripts": {
     "dev:server": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "typeorm:run": "npm run typeorm migration:run -- -d ./src/data-source.ts"
+    "typeorm:run": "npm run typeorm migration:run -- -d ./src/data-source.ts",
+    "test": "jest --coverage --watch",
+    "build": "tsc -p tsconfig.build.json"
   },
   "repository": {
     "type": "git",
@@ -19,18 +21,23 @@
   },
   "homepage": "https://github.com/millez-inc/tokens-api#readme",
   "devDependencies": {
-    "@types/amqplib": "^0.10.4",
+    "@types/amqplib": "0.10.4",
     "@types/bcryptjs": "2.4.6",
     "@types/cors": "2.8.17",
     "@types/express": "4.17.21",
+    "@types/jest": "29.5.11",
     "@types/jsonwebtoken": "9.0.5",
     "@types/node": "20.11.0",
+    "@types/supertest": "6.0.2",
+    "jest": "29.7.0",
+    "supertest": "6.3.4",
+    "ts-jest": "^29.1.2",
     "ts-node": "10.9.2",
     "ts-node-dev": "2.0.0",
     "typescript": "5.3.3"
   },
   "dependencies": {
-    "amqplib": "^0.10.3",
+    "amqplib": "0.10.3",
     "bcryptjs": "2.4.3",
     "cors": "2.8.5",
     "express": "4.18.2",
