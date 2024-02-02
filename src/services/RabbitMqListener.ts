@@ -1,18 +1,18 @@
 import { Channel, ConsumeMessage } from "amqplib";
-import RabbitMqManageConnection from "../utils/RabbitMqManageConnection";
-import { RabbitMqQueues } from "../utils/rabbitmq-queues.enum";
+import { RabbitMqQueues } from "../enums/rabbitmq-queues.enum";
 import CreateValidationTokenService from "./CreateValidationTokenService";
 import ValidationTokenService from "./ValidationTokenService";
 import { IErrorMessage } from "../errors/error-message.interface";
 import { IRabbitQueueContent } from "./interfaces/rabbit-queue-content.inteface";
 import { responseRabbitQueue } from "./interfaces/response-rabbit-queue.type";
 import { IValidationTokenData } from "./interfaces/validation-token-data.interface";
+import RabbitMqManageConnection from "millez-lib-api/src/rabbitMQ-manage-connection/RabbitMqManageConnection";
 
 class RabbitMqListener {
     private rabbitmq: RabbitMqManageConnection;
 
     async listeners() {
-        this.rabbitmq = new RabbitMqManageConnection();
+        this.rabbitmq = new RabbitMqManageConnection('amqp://localhost');
         this.createTokenListener();
         this.validateTokenListener();
     }

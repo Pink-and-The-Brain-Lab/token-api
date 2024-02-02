@@ -1,15 +1,13 @@
 import { NextFunction, Request, Response, Router } from "express";
 import CreateValidationTokenService from "../services/CreateValidationTokenService";
-import { ValidateEmail } from "../utils/validate-email";
-import AppError from "../errors/AppError";
+import { validateEmail } from "../utils/validate-email";
 
 const generateNewTokenRouter = Router();
 
 generateNewTokenRouter.post('/', async (request: Request, response: Response, next: NextFunction) => {
     try {
         const { email } = request.body;
-        const validateEmail = new ValidateEmail().validate(email);
-        if (!validateEmail) throw new AppError('INVALID_EMAIL');
+        validateEmail(email);
         const createValidationTokenService = new CreateValidationTokenService();
         await createValidationTokenService.execute(email);
         return response.json({ created: true });

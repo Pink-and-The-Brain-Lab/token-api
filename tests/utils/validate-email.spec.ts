@@ -1,4 +1,4 @@
-import { ValidateEmail } from "../../src/utils/validate-email";
+import { ValidateEmail } from "../../src/enums/validate-email";
 
 
 describe('validateEmail', () => {

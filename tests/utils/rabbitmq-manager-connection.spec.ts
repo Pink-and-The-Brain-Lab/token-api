@@ -1,5 +1,5 @@
-import RabbitMqManageConnection from "../../src/utils/RabbitMqManageConnection";
-import { RabbitMqQueues } from "../../src/utils/rabbitmq-queues.enum";
+import RabbitMqManageConnection from "../../src/enums/RabbitMqManageConnection";
+import { RabbitMqQueues } from "../../src/enums/rabbitmq-queues.enum";
 import amqplib from 'amqplib';
 
 const mockConnection: any = {
