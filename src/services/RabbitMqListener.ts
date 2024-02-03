@@ -6,7 +6,7 @@ import { IErrorMessage } from "../errors/error-message.interface";
 import { IRabbitQueueContent } from "./interfaces/rabbit-queue-content.inteface";
 import { responseRabbitQueue } from "./interfaces/response-rabbit-queue.type";
 import { IValidationTokenData } from "./interfaces/validation-token-data.interface";
-import RabbitMqManageConnection from "millez-lib-api/src/rabbitMQ-manage-connection/RabbitMqManageConnection";
+import { RabbitMqManageConnection } from "millez-lib-api";
 
 class RabbitMqListener {
     private rabbitmq: RabbitMqManageConnection;
