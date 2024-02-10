@@ -1,7 +1,7 @@
+import { AppError } from "millez-lib-api";
 import { AppDataSource } from "../data-source";
 import ValidationToken from "../models/validation-token.model";
 import { IValidationToken } from "../routes/interfaces/validation-token.interface";
-import AppError from "../errors/AppError";
 
 class ValidationTokenService {
     public async execute({ token }: IValidationToken) {
