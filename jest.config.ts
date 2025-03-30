@@ -1,8 +1,10 @@
-import type { Config } from "@jest/types";
-
-const config: Config.InitialOptions = {
-  preset: "ts-jest",
+/** @type {import('ts-jest').JestConfigWithTsJest} **/
+module.exports = {
+  preset: 'ts-jest',
   testEnvironment: "node",
-  verbose: true,
+  testMatch: ['**/src/**/*.spec.ts', '**/?(*.)+(spec|test).ts'],
+  coverageDirectory: "coverage",
+  coveragePathIgnorePatterns: ["/node_modules/"],
+  resetMocks: false,
+  collectCoverage: true
 };
-export default config;
