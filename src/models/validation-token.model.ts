@@ -6,19 +6,19 @@ class ValidationToken {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column()
+    @Column('text', { nullable: false })
     token: string;
 
-    @Column()
+    @Column('text', { nullable: false })
     email: string;
 
-    @Column()
+    @Column('datetime', { nullable: false })
     validateTokenTime: Date;
 
-    @Column()
+    @Column('datetime', { nullable: false })
     createdAt: Date;
 
-    @Column()
+    @Column('boolean', { nullable: false })
     validated: boolean;
 }
 
