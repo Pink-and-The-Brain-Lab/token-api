@@ -1,10 +1,11 @@
+import { AppError, ValidateEmail } from "millez-lib-api";
 import { AppDataSource } from "../data-source";
 import ValidationToken from "../models/validation-token.model";
-import { validateEmail } from "../utils/validate-email";
 
 class CreateValidationTokenService {
     public async execute(email: string): Promise<ValidationToken> {
-        validateEmail(email);
+        const validateEmail = new ValidateEmail().validate(email);
+        if (!validateEmail) throw new AppError('API_ERRORS.INVALID_EMAIL');
         const tokenRepository = AppDataSource.getRepository(ValidationToken);
         let token = '';
         const tokenSize = 6;
