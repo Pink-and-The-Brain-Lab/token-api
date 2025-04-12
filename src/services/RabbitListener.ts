@@ -1,3 +1,4 @@
+import { RABBITMQ_HOST_URL } from "../constants/rabbitmq-host-url";
 import { RabbitMqQueues } from "../enums/rabbitmq-queues.enum";
 import CreateValidationTokenService from "./CreateValidationTokenService";
 import ValidationTokenService from "./ValidationTokenService";
@@ -5,10 +6,8 @@ import { IValidationTokenData } from "./interfaces/validation-token-data.interfa
 import { RabbitMqListener, RabbitMqManageConnection } from "millez-lib-api";
 
 class RabbitListener {
-    private rabbitmq: RabbitMqManageConnection;
-
     async listeners() {
-        const connection = new RabbitMqManageConnection('amqp://localhost');
+        const connection = new RabbitMqManageConnection(RABBITMQ_HOST_URL);
         const rabbitListener = new RabbitMqListener(connection);
         rabbitListener.genericListener<IValidationTokenData, string>(RabbitMqQueues.CREATE_TOKEN, this.createToken);
         rabbitListener.genericListener<IValidationTokenData, string>(RabbitMqQueues.VALIDATE_TOKEN, this.validateToken);
