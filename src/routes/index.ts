@@ -1,6 +1,6 @@
 import { Router } from "express";
-import validationTokenRouter from "./validation-token.routes";
-import generateNewTokenRouter from "./generate-new-token.routes";
+import validationTokenRouter from "./validation-token";
+import generateNewTokenRouter from "./generate-new-token";
 const routes = Router();
 routes.use('/token-validation', validationTokenRouter);
 routes.use('/generate-new-token', generateNewTokenRouter);
